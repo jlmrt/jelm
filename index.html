@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jelmer Jonkman — Product Leader</title>
+  <title>Jelmer Jonkman | Product Leader</title>
   <meta name="description" content="Resume and professional profile of Jelmer Jonkman — Product leader in Smart Home, IoT, and consumer electronics." />
   <style>
     :root {
@@ -18,20 +18,42 @@
       --maxw: 920px;
     }
     body.light { --bg:#f8fafc; --card:#ffffff; --ink:#0b1220; --muted:#5b6472; background:#f5f7fa; }
+
     * { box-sizing: border-box; }
-    body { margin: 0; font: 15.5px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color: var(--ink); background: var(--bg); transition: background .25s, color .25s; }
+    body {
+      margin: 0;
+      font: 15.5px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--ink);
+      background: var(--bg);
+      transition: background .25s, color .25s;
+    }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
 
-    header.site { position: sticky; top: 0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg), transparent 30%); border-bottom: 1px solid color-mix(in oklab, var(--ink), transparent 82%); z-index: 20; }
+    header.site {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg), transparent 30%);
+      border-bottom: 1px solid color-mix(in oklab, var(--ink), transparent 82%);
+    }
     .bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 20px; max-width: var(--maxw); margin: 0 auto; }
     .id { display:flex; align-items:center; gap:12px; }
     .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#fff; font-weight:700; }
     .name h1 { font-size:18px; margin:0; }
     .name small { color: var(--muted); font-size: 13px; }
+
     .actions { display:flex; gap:8px; flex-wrap:wrap; }
-    .btn { border:1px solid color-mix(in oklab, var(--ink), transparent 80%); background: var(--card); color: var(--ink); padding:7px 12px; border-radius:999px; font-weight:600; font-size:14px; cursor:pointer; text-decoration:none; }
+    .btn {
+      border:1px solid color-mix(in oklab, var(--ink), transparent 80%);
+      background: var(--card); color: var(--ink);
+      padding:7px 12px; border-radius:999px; font-weight:600; font-size:14px; cursor:pointer; text-decoration:none;
+    }
     .btn.primary { background: var(--accent); color:#fff; border:none; }
     .btn.icon { display:flex; align-items:center; gap:6px; }
+
+    /* Hide header nav links on desktop to avoid duplication with sidebar TOC */
+    @media (min-width:880px) {
+      .actions .nav-link { display: none; }
+    }
 
     .grid { display:grid; grid-template-columns: 1fr; gap:20px; }
     @media(min-width:880px){ .grid { grid-template-columns: 240px 1fr; align-items:start; } }
@@ -68,7 +90,12 @@
 
     @media (max-width: 880px){ .toc { display:none; } }
 
-    @media print { header.site, .actions, .toc, .to-top { display:none !important; } body { background:#fff; } .card { box-shadow:none; } a[href^="http"]::after{ content: " (" attr(href) ")"; color:#666; } }
+    @media print {
+      header.site, .actions .nav-link, .toc, .to-top { display:none !important; }
+      body { background:#fff; }
+      .card { box-shadow:none; }
+      a[href^="http"]::after{ content: " (" attr(href) ")"; color:#666; }
+    }
   </style>
 </head>
 <body>
@@ -78,15 +105,16 @@
         <div class="avatar" aria-hidden="true">JJ</div>
         <div class="name">
           <h1>Jelmer Jonkman</h1>
-          <small>Product Leader — Smart Home & IoT</small>
+          <small>Product Leader | Smart Home & IoT</small>
         </div>
       </div>
       <div class="actions">
-        <button class="btn icon" id="modeToggle" aria-label="Toggle color theme" title="Toggle theme">🌙/☀️</button>
-        <a class="btn" href="#experience">Experience</a>
-        <a class="btn" href="#skills">Skills</a>
-        <a class="btn" href="#education">Education</a>
-        <a class="btn" href="#patents">Patents</a>
+        <button class="btn icon" id="modeToggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle theme">☀️</button>
+        <!-- Header nav links: visible on mobile, hidden on desktop to avoid duplication -->
+        <a class="btn nav-link" href="#experience">Experience</a>
+        <a class="btn nav-link" href="#skills">Skills</a>
+        <a class="btn nav-link" href="#education">Education</a>
+        <a class="btn nav-link" href="#patents">Patents</a>
         <button class="btn primary" onclick="window.print()" title="Save as PDF">Download PDF</button>
       </div>
     </div>
@@ -94,7 +122,7 @@
 
   <main class="wrap" id="top">
     <div class="grid">
-      <aside class="toc">
+      <aside class="toc" aria-label="Section navigation">
         <div class="card">
           <strong>Quick nav</strong>
           <a href="#about">About</a>
@@ -115,14 +143,9 @@
           </div>
           <h2>Professional Summary</h2>
           <p>
-            Product leader with 10+ years of experience driving smart home, IoT, and consumer electronics solutions from concept to market. Proven track record of scaling global product lines, leading distributed teams across US, EU, and APAC, and delivering measurable business impact. Skilled in turning complex technology into simple, user‑focused solutions. Passionate about product quality, data‑driven decision‑making, and building digital experiences that respect user privacy.
+            Product leader with 10+ years of experience driving smart home, IoT, and consumer electronics solutions from concept to market. Proven track record of scaling global product lines, leading distributed teams across US, EU, and APAC, and delivering measurable business impact. Skilled in turning complex technology into simple, user-focused solutions. Passionate about product quality, data-driven decision-making, and building digital experiences that respect user privacy.
           </p>
-          <nav class="topline" aria-label="Quick navigation">
-            <a href="#experience">Experience</a>
-            <a href="#skills">Key Skills</a>
-            <a href="#education">Education</a>
-            <a href="#patents">Patents</a>
-          </nav>
+          <!-- Removed the extra in-section nav to avoid duplication -->
         </section>
 
         <section class="section" id="experience">
@@ -134,11 +157,11 @@
               <span class="place">— Universal Electronics (UEI), Enschede • Apr 2022 – Present</span>
             </div>
             <ul class="bullets">
-              <li>Leads global product strategy for Smart Home & IoT portfolio serving millions of end‑users across EMEA, US, and APAC.</li>
-              <li>Drives onboarding success in the mobile app by simplifying setup flows and embedding a self‑service support agent.</li>
-              <li>Spearheads a Virtual Agent platform adopted by Tier‑1 partners to reduce support calls.</li>
-              <li>Aligns firmware, cloud, and mobile roadmaps across US & India to deliver on‑time releases.</li>
-              <li>Champions privacy‑first design; ensures GDPR and EU Data Act compliance while scaling globally.</li>
+              <li>Leads global product strategy for Smart Home & IoT portfolio serving millions of end-users across EMEA, US, and APAC.</li>
+              <li>Drives onboarding success in the mobile app by simplifying setup flows and embedding a self-service support agent.</li>
+              <li>Spearheads a Virtual Agent platform adopted by Tier-1 partners to reduce support calls.</li>
+              <li>Aligns firmware, cloud, and mobile roadmaps across US & India to deliver on-time releases.</li>
+              <li>Champions privacy-first design; ensures GDPR and EU Data Act compliance while scaling globally.</li>
             </ul>
           </article>
 
@@ -149,9 +172,9 @@
             </div>
             <ul class="bullets">
               <li>Owned product vision/execution for nevo.ai, QuickSet Cloud, Nevo Butler, and Virtual Agent services.</li>
-              <li>Launched AI‑driven support products, improving customer satisfaction and creating new revenue streams.</li>
-              <li>Expanded smart‑home partner integrations through simplified APIs and cross‑platform SDKs.</li>
-              <li>Introduced Tier‑0 conversational support, reducing handling time for key service providers.</li>
+              <li>Launched AI-driven support products, improving customer satisfaction and creating new revenue streams.</li>
+              <li>Expanded smart-home partner integrations through simplified APIs and cross-platform SDKs.</li>
+              <li>Introduced Tier-0 conversational support, reducing handling time for key service providers.</li>
             </ul>
           </article>
 
@@ -173,7 +196,7 @@
               <span class="place">— Universal Electronics (UEI) • Dec 2016 – Dec 2017</span>
             </div>
             <ul class="bullets">
-              <li>Managed go‑to‑market for EMEAI region, securing operator wins and contributing to YoY sales growth.</li>
+              <li>Managed go-to-market for EMEAI region, securing operator wins and contributing to YoY sales growth.</li>
             </ul>
           </article>
 
@@ -195,7 +218,7 @@
               <span class="place">— Divitel • Jan 2014 – Jun 2015</span>
             </div>
             <ul class="bullets">
-              <li>Supervised a 12‑person sales support team and improved SLA adherence.</li>
+              <li>Supervised a 12-person sales support team and improved SLA adherence.</li>
             </ul>
           </article>
 
@@ -224,7 +247,7 @@
             <ul class="bullets" style="margin-top:8px">
               <li>Owner, eBookStudio — Freelance eBook Designer (2012–2013)</li>
               <li>Floormanager, Preston Palace — Managed 130+ staff at a large entertainment venue (2009–2012)</li>
-              <li>Marketing Intern, NOW‑Mobile — Supported Palm Pre/Pixi launch (2008–2009)</li>
+              <li>Marketing Intern, NOW-Mobile — Supported Palm Pre/Pixi launch (2008–2009)</li>
               <li>Marketing Trainee, Palm — Assisted with Treo & LifeDrive launches (2005)</li>
             </ul>
           </details>
@@ -238,7 +261,7 @@
               <span class="place">• B.Com. Economics & Marketing (2013)</span>
             </div>
             <ul class="bullets">
-              <li>Minor: Change Management • Internship: Palm Benelux • Thesis: NOW‑Mobile</li>
+              <li>Minor: Change Management • Internship: Palm Benelux • Thesis: NOW-Mobile</li>
               <li>Summerschool, Entrepreneurship (2012)</li>
             </ul>
           </article>
@@ -255,11 +278,106 @@
           <div class="card">
             <div class="tags">
               <span class="tag">Product Strategy & Roadmaps</span>
-              <span class="tag">IoT & Smart Home</span>
+              <span class="tag">Customer Focussed</span>
+              <span class="tag">IoT, Smart Home & HVAC</span>
               <span class="tag">Cloud Platforms (SaaS, APIs, SDKs)</span>
               <span class="tag">Global Team Leadership</span>
               <span class="tag">Agile / Scrum</span>
               <span class="tag">AI Conversational Agents</span>
               <span class="tag">Data Privacy (GDPR, EU Data Act)</span>
-              <span class="tag">Go‑to‑Market Execution</span>
-              <span
+              <span class="tag">Go-to-Market Execution</span>
+              <span class="tag">Mobile Onboarding UX</span>
+              <span class="tag">Firmware / Cloud / App Alignment</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="patents">
+          <h2>Patents</h2>
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">US 11,700,412 B2 — Universal voice assistant</span>
+              <span class="place">• Granted</span>
+            </div>
+            <ul class="bullets">
+              <li><a href="https://patents.google.com/patent/US11700412B2" target="_blank" rel="noopener">View on Google Patents</a></li>
+            </ul>
+          </article>
+           <article class="card exp-item">
+            <div class="role">
+              <span class="title">US20220394348A12 — System and method for using a virtual agent to provide consumer electronic device related technical support</span>
+              <span class="place">• Pending</span>
+            </div>
+            <ul class="bullets">
+              <li><a href="https://patents.google.com/patent/US20220394348A1" target="_blank" rel="noopener">View on Google Patents</a></li>
+            </ul>
+          </article>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Jelmer Jonkman
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑ Top</button>
+
+  <script>
+    // Theme: init with saved preference or system setting, persist on toggle
+    (function () {
+      const body = document.body;
+      const btn = document.getElementById('modeToggle');
+      const mqLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
+
+      const setTheme = (theme, persist = true) => {
+        const isLight = theme === 'light';
+        body.classList.toggle('light', isLight);
+        btn.setAttribute('aria-pressed', String(isLight));
+        btn.title = isLight ? 'Switch to dark' : 'Switch to light';
+        // Icon: sun when dark is next, moon when light is next
+        btn.textContent = isLight ? '☾' : '☀️';
+        if (persist) localStorage.setItem('theme', theme);
+      };
+
+      const initTheme = () => {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') {
+          setTheme(saved, false);
+        } else {
+          setTheme(mqLight && mqLight.matches ? 'light' : 'dark', false);
+        }
+      };
+
+      initTheme();
+
+      btn.addEventListener('click', () => {
+        const next = body.classList.contains('light') ? 'dark' : 'light';
+        setTheme(next, true);
+      });
+
+      if (mqLight && mqLight.addEventListener) {
+        mqLight.addEventListener('change', (e) => {
+          // Only follow system if user hasn't explicitly chosen
+          if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'light' : 'dark', false);
+          }
+        });
+      }
+    })();
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Back-to-top visibility
+    (function () {
+      const btn = document.getElementById('toTop');
+      const toggle = () => btn.classList.toggle('show', window.scrollY > 600);
+      window.addEventListener('scroll', toggle, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      toggle();
+    })();
+  </script>
+</body>
+</html>
