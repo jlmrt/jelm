@@ -1,7 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jelmer Jonkman — Product Leader</title>
+  <meta name="description" content="Resume and professional profile of Jelmer Jonkman — Product leader in Smart Home, IoT, and consumer electronics." />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #12141a;
+      --ink: #e6e7eb;
+      --muted: #a7adba;
+      --accent: #5b8cff;
+      --accent-2: #22c55e;
+      --radius: 14px;
+      --shadow: 0 6px 24px rgba(0,0,0,0.28);
+      --maxw: 920px;
+    }
+    body.light { --bg:#f8fafc; --card:#ffffff; --ink:#0b1220; --muted:#5b6472; background:#f5f7fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 15.5px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color: var(--ink); background: var(--bg); transition: background .25s, color .25s; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+
+    header.site { position: sticky; top: 0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg), transparent 30%); border-bottom: 1px solid color-mix(in oklab, var(--ink), transparent 82%); z-index: 20; }
+    .bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 20px; max-width: var(--maxw); margin: 0 auto; }
+    .id { display:flex; align-items:center; gap:12px; }
+    .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#fff; font-weight:700; }
+    .name h1 { font-size:18px; margin:0; }
+    .name small { color: var(--muted); font-size: 13px; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .btn { border:1px solid color-mix(in oklab, var(--ink), transparent 80%); background: var(--card); color: var(--ink); padding:7px 12px; border-radius:999px; font-weight:600; font-size:14px; cursor:pointer; text-decoration:none; }
+    .btn.primary { background: var(--accent); color:#fff; border:none; }
+    .btn.icon { display:flex; align-items:center; gap:6px; }
+
+    .grid { display:grid; grid-template-columns: 1fr; gap:20px; }
+    @media(min-width:880px){ .grid { grid-template-columns: 240px 1fr; align-items:start; } }
+    .toc { position: sticky; top:76px; }
+    .toc .card { padding:14px; }
+    .toc a { display:block; padding:8px 10px; border-radius:10px; color: var(--ink); text-decoration:none; font-weight:600; font-size:14px; border:1px solid transparent; }
+    .toc a:hover { background: color-mix(in oklab, var(--accent), transparent 90%); border-color: color-mix(in oklab, var(--ink), transparent 80%); }
+    .toc small { display:block; color: var(--muted); margin-top:6px; font-weight:500; }
+
+    .card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border:1px solid color-mix(in oklab, var(--ink), transparent 85%); }
+    .section { scroll-margin-top: 90px; }
+
+    .topline { display:flex; flex-wrap:wrap; gap:12px; color: var(--muted); font-size:14px; }
+    .topline a { color: inherit; text-decoration: none; }
+
+    h2 { font-size: 20px; margin: 14px 0 8px; letter-spacing: .2px; }
+    h3 { font-size: 16px; margin: 8px 0 4px; }
+
+    .exp-item { padding:16px; border-left: 3px solid var(--accent); background: color-mix(in oklab, var(--card), #000 5%); border-radius: 12px; margin-bottom:14px; }
+    .exp-item.current { border-left: 5px solid var(--accent-2); background: color-mix(in oklab, var(--card), var(--accent-2) 8%); }
+    .role { display:flex; flex-wrap:wrap; gap:8px; align-items:baseline; }
+    .role .title { font-weight:700; }
+    .role .place { color: var(--muted); font-weight:500; font-size:14px; }
+    .bullets { margin:0; padding-left:18px; }
+    .bullets li { margin:4px 0; }
+
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { font-size: 13px; padding:6px 10px; border-radius:999px; background: color-mix(in oklab, var(--accent), transparent 90%); border:1px solid color-mix(in oklab, var(--ink), transparent 80%); }
+
+    .to-top { position: fixed; right: 16px; bottom: 16px; border:none; background: var(--accent); color:#fff; padding:10px 12px; border-radius: 12px; font-weight:700; cursor:pointer; box-shadow: var(--shadow); display:none; }
+    .to-top.show { display:block; }
+
+    footer { color: var(--muted); text-align:center; padding: 24px; font-size:13px; }
+
+    @media (max-width: 880px){ .toc { display:none; } }
+
+    @media print { header.site, .actions, .toc, .to-top { display:none !important; } body { background:#fff; } .card { box-shadow:none; } a[href^="http"]::after{ content: " (" attr(href) ")"; color:#666; } }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>Work in progress</p>
-</body>
-</html>
+  <header class="site" role="banner">
+    <div class="bar">
+      <div class="id">
+        <div class="avatar" aria-hidden="true">JJ</div>
+        <div class="name">
+          <h1>Jelmer Jonkman</h1>
+          <small>Product Leader — Smart Home & IoT</small>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn icon" id="modeToggle" aria-label="Toggle color theme" title="Toggle theme">🌙/☀️</button>
+        <a class="btn" href="#experience">Experience</a>
+        <a class="btn" href="#skills">Skills</a>
+        <a class="btn" href="#education">Education</a>
+        <a class="btn" href="#patents">Patents</a>
+        <button class="btn primary" onclick="window.print()" title="Save as PDF">Download PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+    <div class="grid">
+      <aside class="toc">
+        <div class="card">
+          <strong>Quick nav</strong>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Key Skills</a>
+          <a href="#patents">Patents</a>
+          <small>Press “Download PDF” for a print-ready version.</small>
+        </div>
+      </aside>
+
+      <div>
+        <section class="card section" id="about">
+          <div class="topline">
+            <span>📍 Enschede, Netherlands</span>
+            <span>✉️ <a href="mailto:work@jelm.nl">work@jelm.nl</a></span>
+            <span>🔗 <a href="https://www.linkedin.com/in/jelmerjonkman" target="_blank" rel="noopener">LinkedIn</a></span>
+          </div>
+          <h2>Professional Summary</h2>
+          <p>
+            Product leader with 10+ years of experience driving smart home, IoT, and consumer electronics solutions from concept to market. Proven track record of scaling global product lines, leading distributed teams across US, EU, and APAC, and delivering measurable business impact. Skilled in turning complex technology into simple, user‑focused solutions. Passionate about product quality, data‑driven decision‑making, and building digital experiences that respect user privacy.
+          </p>
+          <nav class="topline" aria-label="Quick navigation">
+            <a href="#experience">Experience</a>
+            <a href="#skills">Key Skills</a>
+            <a href="#education">Education</a>
+            <a href="#patents">Patents</a>
+          </nav>
+        </section>
+
+        <section class="section" id="experience">
+          <h2>Professional Experience</h2>
+
+          <article class="card exp-item current">
+            <div class="role">
+              <span class="title">Principal Product Line Manager</span>
+              <span class="place">— Universal Electronics (UEI), Enschede • Apr 2022 – Present</span>
+            </div>
+            <ul class="bullets">
+              <li>Leads global product strategy for Smart Home & IoT portfolio serving millions of end‑users across EMEA, US, and APAC.</li>
+              <li>Drives onboarding success in the mobile app by simplifying setup flows and embedding a self‑service support agent.</li>
+              <li>Spearheads a Virtual Agent platform adopted by Tier‑1 partners to reduce support calls.</li>
+              <li>Aligns firmware, cloud, and mobile roadmaps across US & India to deliver on‑time releases.</li>
+              <li>Champions privacy‑first design; ensures GDPR and EU Data Act compliance while scaling globally.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Global Product Owner</span>
+              <span class="place">— Universal Electronics (UEI) • Apr 2019 – Apr 2022</span>
+            </div>
+            <ul class="bullets">
+              <li>Owned product vision/execution for nevo.ai, QuickSet Cloud, Nevo Butler, and Virtual Agent services.</li>
+              <li>Launched AI‑driven support products, improving customer satisfaction and creating new revenue streams.</li>
+              <li>Expanded smart‑home partner integrations through simplified APIs and cross‑platform SDKs.</li>
+              <li>Introduced Tier‑0 conversational support, reducing handling time for key service providers.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Product Manager — Smart Home Solutions</span>
+              <span class="place">— Universal Electronics (UEI) • Jan 2018 – Apr 2019</span>
+            </div>
+            <ul class="bullets">
+              <li>Drove product roadmaps for wireless sensors, thermostats, gateways, and smart remotes.</li>
+              <li>Introduced Alexa/Google integrations, expanding market coverage.</li>
+              <li>Streamlined IoT platform integrations, reducing partner onboarding time significantly.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Product Marketing Manager — Subscription Broadcasting</span>
+              <span class="place">— Universal Electronics (UEI) • Dec 2016 – Dec 2017</span>
+            </div>
+            <ul class="bullets">
+              <li>Managed go‑to‑market for EMEAI region, securing operator wins and contributing to YoY sales growth.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Product Manager</span>
+              <span class="place">— Divitel, Apeldoorn • Jul 2015 – Nov 2016</span>
+            </div>
+            <ul class="bullets">
+              <li>Launched OTT Cloud TV & Hospitality TV platforms, growing customer base in the first year.</li>
+              <li>Implemented managed DRM & nPVR services, reducing churn among operator clients.</li>
+              <li>Partnered with engineers and stakeholders to bring multiple video technology products to market.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Team Leader Sales Desk International</span>
+              <span class="place">— Divitel • Jan 2014 – Jun 2015</span>
+            </div>
+            <ul class="bullets">
+              <li>Supervised a 12‑person sales support team and improved SLA adherence.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Sales Support</span>
+              <span class="place">— Divitel • Jun 2013 – Dec 2013</span>
+            </div>
+            <ul class="bullets">
+              <li>Supported international video delivery projects with accurate technical and commercial documentation.</li>
+            </ul>
+          </article>
+
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Sales Representative</span>
+              <span class="place">— KPN, Zwolle • Mar 2013 – Jun 2013</span>
+            </div>
+            <ul class="bullets">
+              <li>Ranked in top tier of regional sales reps, consistently surpassing monthly sales targets.</li>
+            </ul>
+          </article>
+
+          <details class="card exp-item">
+            <summary class="role" style="cursor:pointer"><span class="title">Other Roles</span> <span class="place">(click to expand)</span></summary>
+            <ul class="bullets" style="margin-top:8px">
+              <li>Owner, eBookStudio — Freelance eBook Designer (2012–2013)</li>
+              <li>Floormanager, Preston Palace — Managed 130+ staff at a large entertainment venue (2009–2012)</li>
+              <li>Marketing Intern, NOW‑Mobile — Supported Palm Pre/Pixi launch (2008–2009)</li>
+              <li>Marketing Trainee, Palm — Assisted with Treo & LifeDrive launches (2005)</li>
+            </ul>
+          </details>
+        </section>
+
+        <section class="section" id="education">
+          <h2>Education</h2>
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">Saxion University of Applied Sciences — Enschede</span>
+              <span class="place">• B.Com. Economics & Marketing (2013)</span>
+            </div>
+            <ul class="bullets">
+              <li>Minor: Change Management • Internship: Palm Benelux • Thesis: NOW‑Mobile</li>
+              <li>Summerschool, Entrepreneurship (2012)</li>
+            </ul>
+          </article>
+          <article class="card exp-item">
+            <div class="role">
+              <span class="title">OSG Erasmus — Almelo</span>
+              <span class="place">• HAVO (Economics & Society, 2001)</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="skills">
+          <h2>Key Skills</h2>
+          <div class="card">
+            <div class="tags">
+              <span class="tag">Product Strategy & Roadmaps</span>
+              <span class="tag">IoT & Smart Home</span>
+              <span class="tag">Cloud Platforms (SaaS, APIs, SDKs)</span>
+              <span class="tag">Global Team Leadership</span>
+              <span class="tag">Agile / Scrum</span>
+              <span class="tag">AI Conversational Agents</span>
+              <span class="tag">Data Privacy (GDPR, EU Data Act)</span>
+              <span class="tag">Go‑to‑Market Execution</span>
+              <span
