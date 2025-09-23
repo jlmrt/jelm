@@ -15,40 +15,49 @@
       --accent-2: #22c55e;
       --radius: 14px;
       --shadow: 0 6px 24px rgba(0,0,0,0.28);
-      --maxw: 920px;
+      --maxw: 980px;
     }
     body.light { --bg:#f8fafc; --card:#ffffff; --ink:#0b1220; --muted:#5b6472; background:#f5f7fa; }
 
     * { box-sizing: border-box; }
+    img { max-width: 100%; height: auto; display: block; }
+
     body {
       margin: 0;
       font: 15.5px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--ink);
       background: var(--bg);
       transition: background .25s, color .25s;
+      -webkit-text-size-adjust: 100%;
     }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
 
     header.site {
       position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(10px);
+      backdrop-filter: saturate(1.2) blur(10px);
+      -webkit-backdrop-filter: saturate(1.2) blur(10px);
       background: color-mix(in oklab, var(--bg), transparent 30%);
       border-bottom: 1px solid color-mix(in oklab, var(--ink), transparent 82%);
     }
     .bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 20px; max-width: var(--maxw); margin: 0 auto; }
-    .id { display:flex; align-items:center; gap:12px; }
-    .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#fff; font-weight:700; }
-    .name h1 { font-size:18px; margin:0; }
+    .id { display:flex; align-items:center; gap:12px; min-width:0; }
+
+    .avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex: 0 0 44px; box-shadow: 0 1px 2px rgba(0,0,0,0.25) inset; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .name { min-width:0; }
+    .name h1 { font-size:18px; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .name small { color: var(--muted); font-size: 13px; }
 
-    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
     .btn {
       border:1px solid color-mix(in oklab, var(--ink), transparent 80%);
       background: var(--card); color: var(--ink);
       padding:7px 12px; border-radius:999px; font-weight:600; font-size:14px; cursor:pointer; text-decoration:none;
     }
     .btn.primary { background: var(--accent); color:#fff; border:none; }
-    .btn.icon { display:flex; align-items:center; gap:6px; }
+    .btn.icon { display:grid; place-items:center; padding:0; width:40px; height:40px; border-radius:50%; line-height:1; }
+    .btn.icon:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     /* Hide header nav links on desktop to avoid duplication with sidebar TOC */
     @media (min-width:880px) {
@@ -56,8 +65,8 @@
     }
 
     .grid { display:grid; grid-template-columns: 1fr; gap:20px; }
-    @media(min-width:880px){ .grid { grid-template-columns: 240px 1fr; align-items:start; } }
-    .toc { position: sticky; top:76px; }
+    @media(min-width:980px){ .grid { grid-template-columns: 260px 1fr; align-items:start; } }
+    .toc { position: sticky; top:76px; align-self:start; }
     .toc .card { padding:14px; }
     .toc a { display:block; padding:8px 10px; border-radius:10px; color: var(--ink); text-decoration:none; font-weight:600; font-size:14px; border:1px solid transparent; }
     .toc a:hover { background: color-mix(in oklab, var(--accent), transparent 90%); border-color: color-mix(in oklab, var(--ink), transparent 80%); }
@@ -88,7 +97,7 @@
 
     footer { color: var(--muted); text-align:center; padding: 24px; font-size:13px; }
 
-    @media (max-width: 880px){ .toc { display:none; } }
+    @media (max-width: 980px){ .toc { display:none; } }
 
     @media print {
       header.site, .actions .nav-link, .toc, .to-top { display:none !important; }
@@ -96,26 +105,45 @@
       .card { box-shadow:none; }
       a[href^="http"]::after{ content: " (" attr(href) ")"; color:#666; }
     }
+
+    /* --- HERO (photo + summary) --- */
+    .hero { padding: 0; overflow: hidden; }
+    .hero-inner { display:grid; grid-template-columns: 1fr; gap:0; align-items:stretch; }
+    @media (min-width: 860px) {
+      .hero-inner { grid-template-columns: 320px 1fr; }
+    }
+    .hero-photo { position: relative; }
+    .hero-photo .frame { aspect-ratio: 4 / 5; width: 100%; background: #0002; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+    .hero-photo .chrome { position:absolute; inset:12px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.05) inset; overflow:hidden; }
+    @media (min-width: 860px) { .hero-photo .chrome { inset:16px; } }
+
+    .hero-body { padding: 18px 18px 22px; }
+    @media (min-width: 860px) { .hero-body { padding: 22px 22px 26px; } }
+    .hero-body h2 { margin-top: 0; }
+
   </style>
 </head>
 <body>
   <header class="site" role="banner">
     <div class="bar">
       <div class="id">
-        <div class="avatar" aria-hidden="true">JJ</div>
+        <div class="avatar" aria-hidden="true">
+          <img src="https://jelm.nl/1627857444407.jpg" alt="" loading="eager" fetchpriority="high" />
+        </div>
         <div class="name">
           <h1>Jelmer Jonkman</h1>
           <small>Product Leader | Smart Home & IoT</small>
         </div>
       </div>
       <div class="actions">
-        <button class="btn icon" id="modeToggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle theme">☀️</button>
+        <button class="btn icon" id="modeToggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle theme" type="button">☀️</button>
         <!-- Header nav links: visible on mobile, hidden on desktop to avoid duplication -->
         <a class="btn nav-link" href="#experience">Experience</a>
         <a class="btn nav-link" href="#skills">Skills</a>
         <a class="btn nav-link" href="#education">Education</a>
         <a class="btn nav-link" href="#patents">Patents</a>
-        <button class="btn primary" onclick="window.print()" title="Save as PDF">Download PDF</button>
+        <button class="btn primary" onclick="window.print()" title="Save as PDF" type="button">Download PDF</button>
       </div>
     </div>
   </header>
@@ -135,16 +163,33 @@
       </aside>
 
       <div>
-        <section class="card section" id="about">
-          <div class="topline">
-            <span>📍 Enschede, Netherlands</span>
-            <span>✉️ <a href="mailto:work@jelm.nl">work@jelm.nl</a></span>
-            <span>🔗 <a href="https://www.linkedin.com/in/jelmerjonkman" target="_blank" rel="noopener">LinkedIn</a></span>
+        <!-- HERO with photo + summary to avoid tiny image on mobile -->
+        <section class="card section hero" id="about">
+          <div class="hero-inner">
+            <div class="hero-photo">
+              <div class="chrome">
+                <img
+                  src="https://jelm.nl/1627857444407.jpg"
+                  alt="Portrait of Jelmer Jonkman"
+                  loading="eager"
+                  decoding="async"
+                  sizes="(min-width: 860px) 320px, 100vw"
+                />
+              </div>
+              <div class="frame" aria-hidden="true"></div>
+            </div>
+            <div class="hero-body">
+              <div class="topline">
+                <span>📍 Enschede, Netherlands</span>
+                <span>✉️ <a href="mailto:work@jelm.nl">work@jelm.nl</a></span>
+                <span>🔗 <a href="https://www.linkedin.com/in/jelmerjonkman" target="_blank" rel="noopener">LinkedIn</a></span>
+              </div>
+              <h2>Professional Summary</h2>
+              <p>
+                Product leader with 10+ years of experience driving smart home, IoT, and consumer electronics solutions from concept to market. Proven track record of scaling global product lines, leading distributed teams across US, EU, and APAC, and delivering measurable business impact. Skilled in turning complex technology into simple, user-focused solutions. Passionate about product quality, data-driven decision-making, and building digital experiences that respect user privacy.
+              </p>
+            </div>
           </div>
-          <h2>Professional Summary</h2>
-          <p>
-            Product leader with 10+ years of experience driving smart home, IoT, and consumer electronics solutions from concept to market. Proven track record of scaling global product lines, leading distributed teams across US, EU, and APAC, and delivering measurable business impact. Skilled in turning complex technology into simple, user-focused solutions. Passionate about product quality, data-driven decision-making, and building digital experiences that respect user privacy.
-          </p>
         </section>
 
         <section class="section" id="experience">
@@ -302,9 +347,9 @@
               <li><a href="https://patents.google.com/patent/US11700412B2" target="_blank" rel="noopener">View on Google Patents</a></li>
             </ul>
           </article>
-           <article class="card exp-item">
+          <article class="card exp-item">
             <div class="role">
-              <span class="title">US20220394348A12 — System and method for using a virtual agent to provide consumer electronic device related technical support</span>
+              <span class="title">US20220394348A1 — System and method for using a virtual agent to provide consumer electronic device related technical support</span>
               <span class="place">• Pending</span>
             </div>
             <ul class="bullets">
