@@ -73,12 +73,7 @@
     .toc small { display:block; color: var(--muted); margin-top:6px; font-weight:500; }
 
     .card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border:1px solid color-mix(in oklab, var(--ink), transparent 85%); }
-    .section { scroll-margin-top: 120px; }
-    
-    /* Fix navigation scroll offset for sticky header */
-    #about, #experience, #education, #skills, #patents {
-      scroll-margin-top: 80px;
-    }
+    .section { scroll-margin-top: 140px; }
 
     .topline { display:flex; flex-wrap:wrap; gap:12px; color: var(--muted); font-size:14px; }
     .topline a { color: inherit; text-decoration: none; }
@@ -108,11 +103,6 @@
       header.site, .actions .nav-link, .toc, .to-top { display:none !important; }
       /* Hide profile/hero images in the PDF version */
       .hero-photo { display:none !important; }
-      body { background:#fff; }
-      .card { box-shadow:none; }
-      a[href^="http"]::after{ content: " (" attr(href) ")"; color:#666; }
-      .fade-in { opacity: 1 !important; transform: none !important; }
-    }
       body { background:#fff; }
       .card { box-shadow:none; }
       a[href^="http"]::after{ content: " (" attr(href) ")"; color:#666; }
@@ -400,16 +390,8 @@
     
     /* Improved section spacing on mobile */
     @media (max-width: 600px) {
-      .section { scroll-margin-top: 140px; }
+      .section { scroll-margin-top: 160px; }
       h2 { font-size: 18px; margin: 20px 0 12px; }
-      .exp-item { margin-bottom: 12px; }
-    }
-    
-    /* Footer mobile */
-    @media (max-width: 600px) {
-      footer { padding: 20px 16px; }
-      .to-top { right: 12px; bottom: 12px; padding: 8px 10px; font-size: 14px; }
-    }
       .exp-item { margin-bottom: 12px; }
     }
     
@@ -666,6 +648,32 @@
   <button class="to-top" id="toTop" aria-label="Back to top">↑ Top</button>
 
   <script>
+    // Smooth scrolling with header offset so sections aren't hidden behind sticky header
+    (function () {
+      const header = document.querySelector('header.site');
+      const getOffset = () => {
+        if (!header) return 80;
+        const rect = header.getBoundingClientRect();
+        // add small margin below the header
+        return rect.height + 12;
+      };
+
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#' || href === '#top') return;
+        link.addEventListener('click', (e) => {
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          const offset = getOffset();
+          const targetTop = window.scrollY + target.getBoundingClientRect().top - offset;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          history.pushState(null, '', href);
+        });
+      });
+    })();
+
     // Theme: init with saved preference or system setting, persist on toggle
     (function () {
       const body = document.body;
