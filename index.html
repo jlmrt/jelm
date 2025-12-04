@@ -78,11 +78,31 @@
     .topline { display:flex; flex-wrap:wrap; gap:12px; color: var(--muted); font-size:14px; }
     .topline a { color: inherit; text-decoration: none; }
 
-    h2 { font-size: 20px; margin: 14px 0 8px; letter-spacing: .2px; }
+    h2 { font-size: 20px; margin: 14px 0 14px; letter-spacing: .2px; padding-bottom: 6px; }
     h3 { font-size: 16px; margin: 8px 0 4px; }
 
     .exp-item { padding:16px; border-left: 3px solid var(--accent); background: color-mix(in oklab, var(--card), #000 5%); border-radius: 12px; margin-bottom:14px; }
-    .exp-item.current { border-left: 5px solid var(--accent-2); background: color-mix(in oklab, var(--card), var(--accent-2) 8%); }
+    .exp-item.current {
+      border-left: 5px solid var(--accent-2);
+      background: linear-gradient(135deg,
+        color-mix(in oklab, var(--card), var(--accent-2) 10%) 0%,
+        color-mix(in oklab, var(--card), var(--accent) 6%) 100%);
+      border-radius: 12px;
+    }
+    .company-group {
+      margin-bottom: 18px;
+      padding: 10px 10px 4px;
+      border-radius: 18px;
+      background: var(--card);
+      border:1px solid color-mix(in oklab, var(--ink), transparent 82%);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12); /* new soft shadow */
+    }
+    .company-header { display:flex; justify-content:space-between; align-items:baseline; gap:8px; padding: 4px 6px 10px; }
+    .company-name { font-weight:700; font-size:15px; }
+    .company-meta { font-size: 13px; color: var(--muted); }
+    .company-group .exp-item { margin-bottom: 10px; }
+    .company-group.uei { border-left: 4px solid var(--accent); }
+    .company-group.divitel { border-left: 4px solid #f97316; }
     .role { display:flex; flex-wrap:wrap; gap:8px; align-items:baseline; }
     .role .title { font-weight:700; }
     .role .place { color: var(--muted); font-weight:500; font-size:14px; }
@@ -170,16 +190,6 @@
       border-color: var(--accent);
     }
     
-    /* Gradient accent on current role */
-    .exp-item.current {
-      background: linear-gradient(135deg, 
-        color-mix(in oklab, var(--card), var(--accent-2) 8%) 0%,
-        color-mix(in oklab, var(--card), var(--accent) 5%) 100%);
-      border-left: 5px solid;
-      border-image: linear-gradient(180deg, var(--accent-2), var(--accent)) 1;
-    }
-    
-    /* Enhanced skill tags with hover */
     .tag {
       transition: all 0.25s ease;
       cursor: default;
@@ -474,91 +484,105 @@
         <section class="section" id="experience">
           <h2>Professional Experience</h2>
 
-          <article class="card exp-item current fade-in">
-            <div class="role">
-              <span class="title">Principal Product Line Manager - Remote</span>
-              <span class="place">Universal Electronics Inc. • Apr 2022 – Present</span>
+          <div class="company-group uei">
+            <div class="company-header">
+              <span class="company-name">Universal Electronics Inc. (UEI)</span>
+              <span class="company-meta">EMEA, US &amp; India • 2016 – Present</span>
             </div>
-            <ul class="bullets">
-              <li>Leads global product strategy portfolio serving millions of end-users, including a mobile app rated 4.8/5 on both iOS and Android.</li>
-              <li>Drives onboarding success in the mobile apps and on the web by simplifying setup flows and embedding a self-service support agent.</li>
-              <li>Spearheads a Virtual Agent platform adopted by Tier-1 CE customers to significantly reduce support calls.</li>
-              <li>Aligns firmware, cloud, and mobile roadmaps across US & India to deliver on-time end 2 end releases.</li>
-              <li>Champions privacy-first design; ensures GDPR and EU Data Act compliance while scaling globally.</li>
-            </ul>
-          </article>
 
-          <article class="card exp-item fade-in">
-            <div class="role">
-              <span class="title">Global Product Owner</span>
-              <span class="place">— Universal Electronics (UEI) • Apr 2019 – Apr 2022</span>
-            </div>
-            <ul class="bullets">
-              <li>Owned product vision/execution for nevo.ai Assistant, My Nevo, Nevo Butler, and Virtual Agent services.</li>
-              <li>Launched Agentic AI support products, improving customer satisfaction and creating new revenue streams.</li>
-              <li>Expanded smart-home partner integrations through simplified APIs and cross-platform SDKs.</li>
-              <li>Introduced Tier-0 conversational support, reducing handling time for key service providers.</li>
-            </ul>
-          </article>
+            <article class="card exp-item current fade-in">
+              <div class="role">
+                <span class="title">Principal Product Line Manager</span>
+                <span class="place">Remote • Apr 2022 – Present</span>
+              </div>
+              <ul class="bullets">
+                <li>Leads global product strategy portfolio serving millions of end-users, including a mobile app rated 4.8/5 on both iOS and Android.</li>
+                <li>Drives onboarding success in the mobile apps and on the web by simplifying setup flows and embedding a self-service support agent.</li>
+                <li>Spearheads a Virtual Agent platform adopted by Tier-1 CE customers to significantly reduce support calls.</li>
+                <li>Aligns firmware, cloud, and mobile roadmaps across US &amp; India to deliver on-time end 2 end releases.</li>
+                <li>Champions privacy-first design; ensures GDPR and EU Data Act compliance while scaling globally.</li>
+              </ul>
+            </article>
 
-          <article class="card exp-item fade-in">
-            <div class="role">
-              <span class="title">Product Manager — Smart Home Solutions</span>
-              <span class="place">— Universal Electronics (UEI) • Jan 2018 – Apr 2019</span>
-            </div>
-            <ul class="bullets">
-              <li>Drove product roadmaps for wireless sensors, thermostats, gateways, and smart remotes.</li>
-              <li>Introduced Alexa/Google integrations, expanding market coverage.</li>
-              <li>Streamlined IoT platform integrations, reducing partner onboarding time significantly.</li>
-            </ul>
-          </article>
+            <article class="card exp-item fade-in">
+              <div class="role">
+                <span class="title">Global Product Owner</span>
+                <span class="place">Netherlands • Apr 2019 – Apr 2022</span>
+              </div>
+              <ul class="bullets">
+                <li>Owned product vision/execution for nevo.ai Assistant, My Nevo, Nevo Butler, and Virtual Agent services.</li>
+                <li>Launched Agentic AI support products, improving customer satisfaction and creating new revenue streams.</li>
+                <li>Expanded smart-home partner integrations through simplified APIs and cross-platform SDKs.</li>
+                <li>Introduced Tier-0 conversational support, reducing handling time for key service providers.</li>
+              </ul>
+            </article>
 
-          <article class="card exp-item fade-in">
-            <div class="role">
-              <span class="title">Product Marketing Manager — Subscription Broadcasting</span>
-              <span class="place">— Universal Electronics (UEI) • Dec 2016 – Dec 2017</span>
-            </div>
-            <ul class="bullets">
-              <li>Managed go-to-market for EMEAI region, securing operator wins and contributing to YoY sales growth.</li>
-            </ul>
-          </article>
+            <article class="card exp-item fade-in">
+              <div class="role">
+                <span class="title">Product Manager — Smart Home Solutions</span>
+                <span class="place">Netherlands • Jan 2018 – Apr 2019</span>
+              </div>
+              <ul class="bullets">
+                <li>Drove product roadmaps for wireless sensors, thermostats, gateways, and smart remotes.</li>
+                <li>Introduced Alexa/Google integrations, expanding market coverage.</li>
+                <li>Streamlined IoT platform integrations, reducing partner onboarding time significantly.</li>
+              </ul>
+            </article>
 
-          <article class="card exp-item fade-in">
-            <div class="role">
-              <span class="title">Product Manager</span>
-              <span class="place">— Divitel, Apeldoorn • Jul 2015 – Nov 2016</span>
-            </div>
-            <ul class="bullets">
-              <li>Launched OTT Cloud TV & Hospitality TV platforms, growing customer base in the first year.</li>
-              <li>Implemented managed DRM & nPVR services, reducing churn among pay-tv operator clients.</li>
-              <li>Partnered with engineers and stakeholders to bring multiple video technology products to market.</li>
-            </ul>
-          </article>
+            <article class="card exp-item fade-in">
+              <div class="role">
+                <span class="title">Product Marketing Manager — Subscription Broadcasting</span>
+                <span class="place">Netherlands • Dec 2016 – Dec 2017</span>
+              </div>
+              <ul class="bullets">
+                <li>Managed go-to-market for EMEAI region, securing operator wins and contributing to YoY sales growth.</li>
+              </ul>
+            </article>
+          </div>
 
-          <article class="card exp-item fade-in">
-            <div class="role">
-              <span class="title">Team Leader Sales Desk International</span>
-              <span class="place">— Divitel • Jan 2014 – Jun 2015</span>
+          <div class="company-group divitel">
+            <div class="company-header">
+              <span class="company-name">Divitel — Apeldoorn</span>
+              <span class="company-meta">2013 – 2016</span>
             </div>
-            <ul class="bullets">
-              <li>Supervised the international sales support team and improved SLA adherence.</li>
-            </ul>
-          </article>
 
-          <article class="card exp-item fade-in">
-            <div class="role">
-              <span class="title">Sales Support</span>
-              <span class="place">— Divitel • Jun 2013 – Dec 2013</span>
-            </div>
-            <ul class="bullets">
-              <li>Supported international video delivery projects with accurate technical and commercial documentation.</li>
-            </ul>
-          </article>
+            <article class="card exp-item fade-in">
+              <div class="role">
+                <span class="title">Product Manager</span>
+                <span class="place">Jul 2015 – Nov 2016</span>
+              </div>
+              <ul class="bullets">
+                <li>Launched OTT Cloud TV &amp; Hospitality TV platforms, growing customer base in the first year.</li>
+                <li>Implemented managed DRM &amp; nPVR services, reducing churn among pay-tv operator clients.</li>
+                <li>Partnered with engineers and stakeholders to bring multiple video technology products to market.</li>
+              </ul>
+            </article>
+
+            <article class="card exp-item fade-in">
+              <div class="role">
+                <span class="title">Team Leader Sales Desk International</span>
+                <span class="place">Jan 2014 – Jun 2015</span>
+              </div>
+              <ul class="bullets">
+                <li>Supervised the international sales support team and improved SLA adherence.</li>
+              </ul>
+            </article>
+
+            <article class="card exp-item fade-in">
+              <div class="role">
+                <span class="title">Sales Support</span>
+                <span class="place">Jun 2013 – Dec 2013</span>
+              </div>
+              <ul class="bullets">
+                <li>Supported international video delivery projects with accurate technical and commercial documentation.</li>
+              </ul>
+            </article>
+          </div>
 
           <article class="card exp-item fade-in">
             <div class="role">
               <span class="title">Sales Representative</span>
-              <span class="place">— KPN, Zwolle • Mar 2013 – Jun 2013</span>
+              <span class="place">KPN, Zwolle • Mar 2013 – Jun 2013</span>
             </div>
             <ul class="bullets">
               <li>Ranked in top tier of regional sales reps, consistently surpassing monthly sales targets.</li>
@@ -571,7 +595,7 @@
               <li>Owner, eBookStudio — Freelance eBook Designer (2012–2013)</li>
               <li>Floormanager, Preston Palace — Managed 130+ staff at a large entertainment venue (2009–2012)</li>
               <li>Marketing Intern, NOW-Mobile — Supported Palm Pre/Pixi launch (2008–2009)</li>
-              <li>Marketing Trainee, Palm — Assisted with Treo & LifeDrive launches (2005)</li>
+              <li>Marketing Trainee, Palm — Assisted with Treo &amp; LifeDrive launches (2005)</li>
             </ul>
           </details>
         </section>
